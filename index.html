@@ -1,178 +1,382 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Key Code - Bot Ghép Ảnh</title>
+    <title>🎉 Key Code - Bot Ghép Ảnh</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        /* Animated Background Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Container with Glassmorphism */
         .container {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 500px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+            max-width: 600px;
             width: 100%;
             text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: slideIn 0.6s ease-out;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
-        
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Success Icon with Animation */
         .success-icon {
-            font-size: 80px;
+            font-size: 100px;
             margin-bottom: 20px;
-            animation: bounce 1s ease-in-out;
+            animation: bounce 1s ease-in-out, rotate 2s ease-in-out infinite;
+            display: inline-block;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
         }
-        
+
         @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            25% {
+                transform: translateY(-20px) rotate(-10deg);
+            }
+
+            50% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            75% {
+                transform: translateY(-10px) rotate(10deg);
+            }
         }
-        
+
+        @keyframes rotate {
+
+            0%,
+            100% {
+                transform: rotate(-5deg);
+            }
+
+            50% {
+                transform: rotate(5deg);
+            }
+        }
+
         h1 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 28px;
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 42px;
+            font-weight: 700;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            letter-spacing: -1px;
         }
-        
+
         .subtitle {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 16px;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 40px;
+            font-size: 18px;
+            font-weight: 300;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
-        
+
+        /* Key Container with Glow Effect */
         .key-container {
-            background: #f8f9fa;
-            border: 2px dashed #667eea;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 30px 0;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            position: relative;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2),
+                0 0 50px rgba(102, 126, 234, 0.3);
+            animation: glow 2s ease-in-out infinite;
         }
-        
+
+        @keyframes glow {
+
+            0%,
+            100% {
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2),
+                    0 0 50px rgba(102, 126, 234, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2),
+                    0 0 80px rgba(102, 126, 234, 0.6);
+            }
+        }
+
         .key-label {
-            color: #666;
+            color: rgba(255, 255, 255, 0.9);
             font-size: 14px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             font-weight: 600;
-        }
-        
-        .key-code {
-            font-size: 24px;
-            font-weight: bold;
-            color: #667eea;
-            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
             letter-spacing: 2px;
-            word-break: break-all;
         }
-        
+
+        .key-code {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 3px;
+            word-break: break-all;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .key-code:hover {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            transform: scale(1.05);
+        }
+
+        /* Modern Button with Gradient */
         .copy-btn {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            padding: 15px 40px;
+            padding: 18px 50px;
             border-radius: 50px;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
             cursor: pointer;
-            margin-top: 20px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        
-        .copy-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
-        }
-        
-        .copy-btn:active {
-            transform: translateY(0);
-        }
-        
-        .copied {
-            background: #10b981 !important;
-        }
-        
-        .instructions {
-            background: #e0e7ff;
-            border-radius: 10px;
-            padding: 20px;
             margin-top: 30px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .copy-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .copy-btn:hover::before {
+            left: 100%;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .copy-btn:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .copied {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+            animation: pulse 0.5s ease;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Instructions Card */
+        .instructions {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 40px;
             text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
-        
+
         .instructions h3 {
-            color: #4c1d95;
-            margin-bottom: 15px;
-            font-size: 18px;
-        }
-        
-        .instructions ol {
-            color: #5b21b6;
-            padding-left: 20px;
-        }
-        
-        .instructions li {
-            margin-bottom: 10px;
-            line-height: 1.6;
-        }
-        
-        .instructions code {
-            background: white;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            color: #667eea;
-        }
-        
-        .telegram-btn {
-            display: inline-block;
-            background: #0088cc;
-            color: white;
-            text-decoration: none;
-            padding: 12px 30px;
-            border-radius: 50px;
-            margin-top: 20px;
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 22px;
             font-weight: 600;
-            transition: background 0.3s;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
-        
-        .telegram-btn:hover {
-            background: #006699;
+
+        .instructions ol {
+            color: rgba(255, 255, 255, 0.95);
+            padding-left: 25px;
         }
-        
-        .error {
-            color: #ef4444;
-            margin-top: 20px;
+
+        .instructions li {
+            margin-bottom: 15px;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .instructions code {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            color: #fff;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #f0f;
+            position: absolute;
+            animation: confetti-fall 3s linear;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 25px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .success-icon {
+                font-size: 80px;
+            }
+
+            .key-code {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+
+            .copy-btn {
+                padding: 15px 40px;
+                font-size: 16px;
+            }
         }
     </style>
 </head>
+
 <body>
+    <!-- Animated Particles Background -->
+    <div class="particles" id="particles"></div>
+
     <div class="container">
         <div class="success-icon">🎉</div>
         <h1>Chúc mừng!</h1>
         <p class="subtitle">Bạn đã hoàn thành vượt link thành công!</p>
-        
+
         <div class="key-container">
             <div class="key-label">🔑 KEY CODE CỦA BẠN:</div>
             <div class="key-code" id="keyCode">Đang tải...</div>
         </div>
-        
+
         <button class="copy-btn" id="copyBtn" onclick="copyKey()">
             📋 Copy Key Code
         </button>
-        
+
         <div class="instructions">
             <h3>📝 Hướng dẫn sử dụng:</h3>
             <ol>
@@ -183,41 +387,95 @@
                 <li>Nhấn Enter và bắt đầu ghép ảnh! 🎨</li>
             </ol>
         </div>
-        
-        <!-- Uncomment and update with your bot username -->
-        <!-- <a href="https://t.me/YOUR_BOT_USERNAME" class="telegram-btn">
-            📱 Mở Telegram Bot
-        </a> -->
     </div>
-    
+
     <script>
-        // Lấy key code từ URL parameter
+        // Create animated particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Create confetti effect
+        function createConfetti() {
+            const colors = ['#667eea', '#764ba2', '#f093fb', '#ffd700', '#ff6b6b', '#4ecdc4'];
+            const confettiCount = 100;
+
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 3 + 's';
+                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                document.body.appendChild(confetti);
+
+                // Remove confetti after animation
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+
+        // Get key code from URL
         function getKeyFromURL() {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get('key');
         }
-        
-        // Hiển thị key code
+
+        // Display key code with animation
         const keyCode = getKeyFromURL();
         const keyCodeElement = document.getElementById('keyCode');
-        
+
         if (keyCode) {
-            keyCodeElement.textContent = keyCode;
+            // Animate key display character by character
+            let displayedKey = '';
+            let index = 0;
+
+            const interval = setInterval(() => {
+                if (index < keyCode.length) {
+                    displayedKey += keyCode[index];
+                    keyCodeElement.textContent = displayedKey;
+                    index++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 50);
         } else {
             keyCodeElement.textContent = 'KEY không hợp lệ';
-            keyCodeElement.style.color = '#ef4444';
+            keyCodeElement.style.background = 'linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%)';
+            keyCodeElement.style['-webkit-background-clip'] = 'text';
+            keyCodeElement.style['background-clip'] = 'text';
         }
-        
+
         // Copy key to clipboard
         function copyKey() {
             const keyCode = document.getElementById('keyCode').textContent;
             const copyBtn = document.getElementById('copyBtn');
-            
+
             if (keyCode && keyCode !== 'Đang tải...' && keyCode !== 'KEY không hợp lệ') {
                 navigator.clipboard.writeText(keyCode).then(() => {
                     copyBtn.textContent = '✅ Đã copy!';
                     copyBtn.classList.add('copied');
-                    
+
+                    // Create mini confetti on copy
+                    for (let i = 0; i < 30; i++) {
+                        const confetti = document.createElement('div');
+                        confetti.className = 'confetti';
+                        confetti.style.left = '50%';
+                        confetti.style.top = '50%';
+                        confetti.style.backgroundColor = ['#667eea', '#764ba2', '#ffd700'][Math.floor(Math.random() * 3)];
+                        document.body.appendChild(confetti);
+                        setTimeout(() => confetti.remove(), 3000);
+                    }
+
                     setTimeout(() => {
                         copyBtn.textContent = '📋 Copy Key Code';
                         copyBtn.classList.remove('copied');
@@ -227,9 +485,9 @@
                 });
             }
         }
-        
-        // Optional: Auto-select key on click
-        document.getElementById('keyCode').addEventListener('click', function() {
+
+        // Click key to select
+        document.getElementById('keyCode').addEventListener('click', function () {
             if (window.getSelection) {
                 const range = document.createRange();
                 range.selectNode(this);
@@ -237,6 +495,13 @@
                 window.getSelection().addRange(range);
             }
         });
+
+        // Initialize on load
+        window.addEventListener('load', () => {
+            createParticles();
+            setTimeout(createConfetti, 500);
+        });
     </script>
 </body>
+
 </html>
