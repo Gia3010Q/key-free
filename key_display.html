@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Code - Bot Ghép Ảnh</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .success-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: bounce 1s ease-in-out;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .key-container {
+            background: #f8f9fa;
+            border: 2px dashed #667eea;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .key-label {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .key-code {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+            word-break: break-all;
+        }
+        
+        .copy-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .copy-btn:active {
+            transform: translateY(0);
+        }
+        
+        .copied {
+            background: #10b981 !important;
+        }
+        
+        .instructions {
+            background: #e0e7ff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: left;
+        }
+        
+        .instructions h3 {
+            color: #4c1d95;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .instructions ol {
+            color: #5b21b6;
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .instructions code {
+            background: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #667eea;
+        }
+        
+        .telegram-btn {
+            display: inline-block;
+            background: #0088cc;
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            margin-top: 20px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .telegram-btn:hover {
+            background: #006699;
+        }
+        
+        .error {
+            color: #ef4444;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">🎉</div>
+        <h1>Chúc mừng!</h1>
+        <p class="subtitle">Bạn đã hoàn thành vượt link thành công!</p>
+        
+        <div class="key-container">
+            <div class="key-label">🔑 KEY CODE CỦA BẠN:</div>
+            <div class="key-code" id="keyCode">Đang tải...</div>
+        </div>
+        
+        <button class="copy-btn" id="copyBtn" onclick="copyKey()">
+            📋 Copy Key Code
+        </button>
+        
+        <div class="instructions">
+            <h3>📝 Hướng dẫn sử dụng:</h3>
+            <ol>
+                <li>Nhấn nút "<strong>Copy Key Code</strong>" ở trên</li>
+                <li>Mở bot Telegram của bạn</li>
+                <li>Gõ lệnh: <code>/redeem KEY-CODE</code></li>
+                <li>Paste key code vừa copy vào</li>
+                <li>Nhấn Enter và bắt đầu ghép ảnh! 🎨</li>
+            </ol>
+        </div>
+        
+        <!-- Uncomment and update with your bot username -->
+        <!-- <a href="https://t.me/YOUR_BOT_USERNAME" class="telegram-btn">
+            📱 Mở Telegram Bot
+        </a> -->
+    </div>
+    
+    <script>
+        // Lấy key code từ URL parameter
+        function getKeyFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('key');
+        }
+        
+        // Hiển thị key code
+        const keyCode = getKeyFromURL();
+        const keyCodeElement = document.getElementById('keyCode');
+        
+        if (keyCode) {
+            keyCodeElement.textContent = keyCode;
+        } else {
+            keyCodeElement.textContent = 'KEY không hợp lệ';
+            keyCodeElement.style.color = '#ef4444';
+        }
+        
+        // Copy key to clipboard
+        function copyKey() {
+            const keyCode = document.getElementById('keyCode').textContent;
+            const copyBtn = document.getElementById('copyBtn');
+            
+            if (keyCode && keyCode !== 'Đang tải...' && keyCode !== 'KEY không hợp lệ') {
+                navigator.clipboard.writeText(keyCode).then(() => {
+                    copyBtn.textContent = '✅ Đã copy!';
+                    copyBtn.classList.add('copied');
+                    
+                    setTimeout(() => {
+                        copyBtn.textContent = '📋 Copy Key Code';
+                        copyBtn.classList.remove('copied');
+                    }, 2000);
+                }).catch(err => {
+                    alert('Không thể copy. Vui lòng copy thủ công: ' + keyCode);
+                });
+            }
+        }
+        
+        // Optional: Auto-select key on click
+        document.getElementById('keyCode').addEventListener('click', function() {
+            if (window.getSelection) {
+                const range = document.createRange();
+                range.selectNode(this);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+            }
+        });
+    </script>
+</body>
+</html>
