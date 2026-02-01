@@ -4,7 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Key Code - Bot Ghép Ảnh</title>
+    <title>Key - Bot Ghép Ảnh</title>
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Key - Bot Ghép Ảnh">
+    <meta property="og:description" content="Nhận key miễn phí để ghép ảnh">
+    <meta property="og:type" content="website">
+    <meta name="description" content="Nhận key miễn phí để ghép ảnh trên bot Telegram">
     <style>
         * {
             margin: 0;
@@ -174,18 +180,18 @@
         <p class="subtitle">Bạn đã hoàn thành vượt link thành công!</p>
 
         <div class="key-container">
-            <div class="key-label">🔑 KEY CODE CỦA BẠN:</div>
+            <div class="key-label">🔑 KEY CỦA BẠN:</div>
             <div class="key-code" id="keyCode">Đang tải...</div>
         </div>
 
         <button class="copy-btn" id="copyBtn" onclick="copyKey()">
-            📋 Copy Key Code
+            📋 Copy Key
         </button>
 
         <div class="instructions">
             <h3>📝 Hướng dẫn sử dụng:</h3>
             <ol>
-                <li>Nhấn nút "<strong>Copy Key Code</strong>" ở trên</li>
+                <li>Nhấn nút "<strong>Copy Key</strong>" ở trên</li>
                 <li>Mở bot Telegram của bạn</li>
                 <li>Gõ lệnh: <code>/redeem KEY-CODE</code></li>
                 <li>Paste key code vừa copy vào</li>
@@ -228,7 +234,7 @@
                     copyBtn.classList.add('copied');
 
                     setTimeout(() => {
-                        copyBtn.textContent = '📋 Copy Key Code';
+                        copyBtn.textContent = '📋 Copy Key';
                         copyBtn.classList.remove('copied');
                     }, 2000);
                 }).catch(err => {
